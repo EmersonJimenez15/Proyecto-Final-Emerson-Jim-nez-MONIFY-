@@ -1,0 +1,70 @@
+<!--
+  Pantalla principal (Clase 15): barra superior con el versículo, tarjetas separadas 8 dp,
+  esquinas asimétricas, solo colores del tema (?attr/...) para que funcione claro y oscuro.
+  Encima de todo va la pantalla de bienvenida (welcomeOverlay) con el botón Continuar.
+ -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="?attr/colorSurface">
+    <!--  ===================== CONTENIDO =====================  -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+        <!--  Barra superior: versículo + botones de metas  -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="?attr/colorPrimaryContainer" android:orientation="vertical" android:padding="@dimen/marca_padding_medium">
+            <TextView android:id="@+id/tvVersiculo" style="@style/Marca.BodyLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="?attr/colorOnPrimaryContainer" android:textStyle="italic"/>
+            <TextView android:id="@+id/tvVersiculoRef" style="@style/Marca.LabelSmall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="end" android:textColor="?attr/colorOnPrimaryContainer"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnNuevaMeta" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginEnd="4dp" android:layout_weight="1" android:text="Nueva meta"/>
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnContinuarMeta" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_weight="1" android:text="Continuar meta"/>
+            </LinearLayout>
+            <TextView android:id="@+id/tvAccion" style="@style/Marca.LabelSmall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:textColor="?attr/colorOnPrimaryContainer"/>
+        </LinearLayout>
+        <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:padding="@dimen/marca_padding_medium">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <!--  Tarjeta: meta actual  -->
+                <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Filled" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/marca_padding_small" app:cardBackgroundColor="?attr/colorSecondaryContainer" app:shapeAppearance="@style/ShapeAppearance.Marca.Tarjeta">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/marca_padding_medium">
+                        <TextView android:id="@+id/tvMetaNombre" style="@style/Marca.DisplayMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="?attr/colorOnSecondaryContainer"/>
+                        <TextView android:id="@+id/tvMetaMonto" style="@style/Marca.DisplayLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="?attr/colorPrimary"/>
+                        <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progresoMeta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:max="100"/>
+                        <TextView android:id="@+id/tvMetaFaltante" style="@style/Marca.BodyLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:textColor="?attr/colorOnSecondaryContainer"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <!--  Tarjeta: registrar movimiento  -->
+                <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Filled" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/marca_padding_small" app:cardBackgroundColor="?attr/colorSurfaceVariant" app:shapeAppearance="@style/ShapeAppearance.Marca.Tarjeta">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/marca_padding_medium">
+                        <TextView style="@style/Marca.DisplayMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Registrar movimiento" android:textColor="?attr/colorOnSurfaceVariant"/>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:hint="Monto (Q)">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etMonto" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:hint="Descripción">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDescripcion" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btnDepositar" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginEnd="4dp" android:layout_weight="1" android:text="Depositar"/>
+                            <com.google.android.material.button.MaterialButton android:id="@+id/btnRetirar" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_weight="1" android:text="Retirar"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <!--  Tarjeta: plan de ahorro  -->
+                <com.google.android.material.card.MaterialCardView style="@style/Widget.Material3.CardView.Filled" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/marca_padding_small" app:cardBackgroundColor="?attr/colorTertiaryContainer" app:shapeAppearance="@style/ShapeAppearance.Marca.Tarjeta">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/marca_padding_medium">
+                        <TextView style="@style/Marca.DisplayMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Plan de ahorro" android:textColor="?attr/colorOnTertiaryContainer"/>
+                        <Spinner android:id="@+id/spPlan" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:minHeight="48dp"/>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Ingreso mensual (Q)">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etIngreso" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/btnPlan" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:text="Calcular plan"/>
+                        <TextView android:id="@+id/tvPlan" style="@style/Marca.BodyLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:textColor="?attr/colorOnTertiaryContainer"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <!--  Historial: una tarjeta por movimiento (se crean desde MainActivity)  -->
+                <TextView android:id="@+id/tvHistorialTitulo" style="@style/Marca.DisplayMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:layout_marginBottom="@dimen/marca_padding_small" android:text="Historial" android:textColor="?attr/colorOnSurface"/>
+                <LinearLayout android:id="@+id/contenedorHistorial" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <!--  ===================== BIENVENIDA =====================  -->
+    <LinearLayout android:id="@+id/welcomeOverlay" android:layout_width="match_parent" android:layout_height="match_parent" android:background="?attr/colorSurface" android:clickable="true" android:focusable="true" android:gravity="center" android:orientation="vertical" android:padding="@dimen/marca_padding_large">
+        <TextView android:id="@+id/tvBienvenidaTitulo" style="@style/Marca.DisplayLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Bienvenido a tu nueva aplicación de ahorros" android:textColor="?attr/colorPrimary"/>
+        <TextView android:id="@+id/tvBienvenidaVersiculo" style="@style/Marca.BodyLarge" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_large" android:gravity="center" android:textColor="?attr/colorOnSurface" android:textStyle="italic"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnContinuar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_large" android:minWidth="200dp" android:text="Continuar"/>
+    </LinearLayout>
+</FrameLayout>

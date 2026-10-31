@@ -1,0 +1,9 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="@dimen/marca_padding_large" android:paddingTop="@dimen/marca_padding_small" android:paddingEnd="@dimen/marca_padding_large">
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre de la meta (ej. Celular nuevo)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etNombreMeta" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences" android:maxLength="40"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:hint="Objetivo (Q)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etObjetivoMeta" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView android:id="@+id/tvErrorMeta" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/marca_padding_small" android:textColor="?attr/colorError" android:visibility="gone"/>
+</LinearLayout>

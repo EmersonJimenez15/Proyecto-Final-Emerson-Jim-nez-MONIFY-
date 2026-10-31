@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Marca.DisplayLarge" parent="">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Marca.DisplayMedium" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Marca.LabelSmall" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Marca.BodyLarge" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ShapeAppearance.Marca.Tarjeta" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+</resources>
